@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    text-align: center;
+}
+
+h4 {
+    color: #2c3e50;
+    margin-bottom: 100px;
+}
+
+form {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #3498db;
+    background-color: #ecf0f1;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+th, td {
+    border: 1px solid #3498db;
+    padding: 10px;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.scrollable-name {
+    max-width: 120px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Color-coded percentage values */
+.water-percent {
+    color: blue;
+}
+
+.dry-soil-percent {
+    color: brown;
+}
+
+.wet-soil-percent {
+    color: green;
+}
+
+.salty-muddy-percent {
+    color: purple;
+}
+
+.chart-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 charts per row */
+    gap: 5px;
+    width: 40%;
+    margin: auto;
+    padding: 10px;
+}
+
+.chart-box {
+    width: 40%;
+    height: 150px; /* Smaller height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+}
+
+img {
+    display: block;
+    margin: 20px auto;
+    max-width: 90%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
