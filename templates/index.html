@@ -1,0 +1,119 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Images</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">📤 Upload Satellite Images</h2>
+
+    <form action="/upload/" method="post" enctype="multipart/form-data" class="mt-3">
+        <input type="file" name="files" multiple class="form-control" required>
+        <button type="submit" class="btn btn-success mt-3 w-100">Upload</button>
+    </form>
+
+    <h4 class="mt-5">📂 Recent Uploads</h4>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Image Name</th>
+                <th>Image Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for image in images %}
+            <tr>
+                <td>{{ image.image_name }}</td>
+                <td>{{ image.image_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Moisture Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-4">
+    <div style="padding-bottom: 50px;">
+        <h4 class="text-center text-primary">Satellite Images Analysis</h4>
+
+    </div>
+
+    <form action="/upload/" method="post" enctype="multipart/form-data" class="mt-3">
+        <input type="file" name="files" multiple class="form-control" required>
+        <button type="submit" class="btn btn-success mt-3">Upload</button>
+        <span style="margin-left: 10px; font-size: 14px; color: #555;">(Image upload limit: 40)</span>
+    </form>
+    <h4 class="mt-5 text-center">📈 Satellite Data Analysis</h4>
+    {% if plot_generated %}
+        <img src="/plots/" alt="Soil Analysis Chart" style="width: 100%; border-radius: 10px;">
+
+        <!-- <img src="/plot/" class="img-fluid mt-3" alt="Soil Moisture Analysis"> -->
+        <!-- <div class="chart-container">
+            <canvas id="waterChart"></canvas>
+            <canvas id="drySoilChart"></canvas>
+            <canvas id="wetSoilChart"></canvas>
+            <canvas id="saltyMuddyChart"></canvas>
+        </div> -->
+
+
+    {% endif %}
+
+    {% if selected_images %}
+    <h4 class="mt-5 text-center">Selected Images Analysis</h4>
+    <table class="table table-bordered mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>Image Name</th>
+                <th>Image Date</th>
+                <!-- <th>Processing Date</th>
+                <th>Unique ID</th> -->
+                <th>Water %</th>
+                <th>Dry Soil %</th>
+                <th>Wet Soil %</th>
+                <th>Salty Mud %</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in selected_images %}
+            <tr>
+                <td>
+                    <span title="{{ row.image_name }}">{{ row.image_name }}</span>
+                </td>
+                <td>{{ row.image_date }}</td>
+                <td class="water-percent">{{ "%.2f"|format(row.water_percent) }}</td>
+                <td class="dry-soil-percent">{{ "%.2f"|format(row.dry_soil_percent) }}</td>
+                <td class="wet-soil-percent">{{ "%.2f"|format(row.wet_soil_percent) }}</td>
+                <td class="salty-muddy-percent">{{ "%.2f"|format(row.salty_muddy_percent) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-center text-danger mt-3">No images selected for analysis.</p>
+    {% endif %}
+
+    
+    <!-- <img src="/plot/" class="img-fluid mt-3" alt="Soil Moisture Analysis"> -->
+</div>
+
+
+
+
+</body>
+</html>
